@@ -46,18 +46,4 @@ return new class extends Migration
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
-    public function up(): void
-{
-    Schema::table('users', function (Blueprint $table) {
-        $table->boolean('is_blacklisted')->default(false)->after('role');
-    });
-}
-
-public function down(): void
-{
-    Schema::table('users', function (Blueprint $table) {
-        $table->dropColumn('is_blacklisted');
-    });
-}
-
 };
